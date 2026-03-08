@@ -1,0 +1,32 @@
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at top, #12172a 0%, #06070d 45%, #020204 100%);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.clock-wrap {
+  padding: 1.5rem 2rem;
+  border: 1px solid rgba(0, 255, 255, 0.25);
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.25), inset 0 0 24px rgba(0, 255, 255, 0.08);
+}
+
+#clock {
+  margin: 0;
+  font-size: clamp(2rem, 8vw, 5rem);
+  letter-spacing: 0.2em;
+  color: #2fffff;
+  text-shadow: 0 0 8px rgba(47, 255, 255, 0.95), 0 0 24px rgba(47, 255, 255, 0.8), 0 0 44px rgba(47, 255, 255, 0.55);
+}
