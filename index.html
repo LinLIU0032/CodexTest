@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Motivational Quotes</title>
+  <style>
+    :root {
+      --bg-start: #f8fafc;
+      --bg-end: #e2e8f0;
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-subtle: #64748b;
+      --accent: #0ea5e9;
+      --accent-hover: #0284c7;
+      --shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(145deg, var(--bg-start), var(--bg-end));
+      color: var(--text-main);
+      padding: 24px;
+    }
+
+    .card {
+      width: min(680px, 100%);
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 40px 32px;
+      text-align: center;
+    }
+
+    .quote {
+      font-size: clamp(1.2rem, 2.4vw, 1.8rem);
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .translation {
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      line-height: 1.7;
+      color: var(--text-subtle);
+      margin-bottom: 14px;
+    }
+
+    .author {
+      color: var(--text-subtle);
+      margin-bottom: 28px;
+      font-size: 0.98rem;
+    }
+
+    .btn {
+      border: none;
+      background: var(--accent);
+      color: #ffffff;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .btn:hover {
+      background: var(--accent-hover);
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <p id="quote" class="quote"></p>
+    <p id="translation" class="translation"></p>
+    <p id="author" class="author"></p>
+    <button id="newQuoteBtn" class="btn" type="button">New Quote</button>
+  </main>
+
+  <script>
+    const quotes = [
+      { text: "Success is the sum of small efforts, repeated day in and day out.", zh: "成功是日复一日不断重复的小努力之和。", author: "Robert Collier" },
+      { text: "You do not have to be great to start, but you have to start to be great.", zh: "你不必足够优秀才开始，但必须开始，才会变得优秀。", author: "Zig Ziglar" },
+      { text: "It always seems impossible until it's done.", zh: "在完成之前，一切看起来都不可能。", author: "Nelson Mandela" },
+      { text: "Believe you can and you're halfway there.", zh: "相信你能做到，你就已经成功了一半。", author: "Theodore Roosevelt" },
+      { text: "Do what you can, with what you have, where you are.", zh: "在你所在之处，用你拥有的条件，尽你所能。", author: "Theodore Roosevelt" },
+      { text: "Dream big and dare to fail.", zh: "心怀大梦，也要敢于失败。", author: "Norman Vaughan" },
+      { text: "Hardships often prepare ordinary people for an extraordinary destiny.", zh: "苦难常常让普通人走向不凡的命运。", author: "C.S. Lewis" },
+      { text: "Quality is not an act, it is a habit.", zh: "品质不是一次行动，而是一种习惯。", author: "Aristotle" },
+      { text: "The future depends on what you do today.", zh: "未来取决于你今天所做的一切。", author: "Mahatma Gandhi" },
+      { text: "Small progress is still progress.", zh: "再小的进步，也是进步。", author: "Anonymous" },
+      { text: "Your limitation; it's only your imagination.", zh: "所谓限制，很多时候只是你的想象。", author: "Anonymous" }
+    ];
+
+    const quoteEl = document.getElementById("quote");
+    const translationEl = document.getElementById("translation");
+    const authorEl = document.getElementById("author");
+    const newQuoteBtn = document.getElementById("newQuoteBtn");
+
+    let currentIndex = -1;
+
+    function getRandomIndex() {
+      if (quotes.length <= 1) return 0;
+
+      let nextIndex;
+      do {
+        nextIndex = Math.floor(Math.random() * quotes.length);
+      } while (nextIndex === currentIndex);
+
+      return nextIndex;
+    }
+
+    function showNewQuote() {
+      currentIndex = getRandomIndex();
+      const { text, zh, author } = quotes[currentIndex];
+      quoteEl.textContent = `"${text}"`;
+      translationEl.textContent = zh;
+      authorEl.textContent = `- ${author}`;
+    }
+
+    newQuoteBtn.addEventListener("click", showNewQuote);
+    showNewQuote();
+  </script>
+</body>
+</html>
