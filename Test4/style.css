@@ -36,6 +36,7 @@ h1 {
   line-height: 1.6;
   font-size: clamp(1rem, 1.8vw, 1.2rem);
   min-height: 4.5rem;
+  white-space: pre-line;
   display: flex;
   align-items: center;
   justify-content: center;
